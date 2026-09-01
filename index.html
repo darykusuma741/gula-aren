@@ -233,7 +233,7 @@
   /* ---------- Testimoni ---------- */
   .tslider{position:relative;max-width:700px;margin:46px auto 0;overflow:hidden}
   .ttrack{display:flex;transition:transform .5s ease}
-  .tslide{min-width:100%;padding:0 44px;box-sizing:border-box}
+  .tslide{flex:0 0 100%;padding:0 44px;box-sizing:border-box}
   .tcard{background:#fff;border-radius:20px;padding:36px 30px;box-shadow:var(--shadow);text-align:center}
   .tcard .stars{color:var(--gold);margin-bottom:14px;letter-spacing:2px;font-size:1.1rem}
   .tcard p{font-size:1rem;margin-bottom:20px;color:var(--brown)}
@@ -247,6 +247,12 @@
   .tdots{display:flex;justify-content:center;gap:10px;margin-top:24px}
   .tdot{width:10px;height:10px;border-radius:50%;background:#d9c7b1;border:none;cursor:pointer;transition:.3s}
   .tdot.active{background:var(--gold);width:26px;border-radius:6px}
+  @media(max-width:600px){
+    .tslide{padding:0 8px}
+    .tcard{padding:26px 18px}
+    .tcard p{font-size:.95rem}
+    .tnav{width:32px;height:32px;font-size:1.1rem}
+  }
 
   /* ---------- Lokasi ---------- */
   .lokasi-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch;margin-top:46px}
@@ -782,6 +788,16 @@ const tslider = document.getElementById('tslider');
 tslider.addEventListener('mouseenter', stopAuto);
 tslider.addEventListener('mouseleave', startAuto);
 goTo(0); startAuto();
+
+// Swipe support
+let txStart = null;
+tslider.addEventListener('touchstart', e => { txStart = e.touches[0].clientX; }, {passive:true});
+tslider.addEventListener('touchend', e => {
+  if (txStart === null) return;
+  const dx = e.changedTouches[0].clientX - txStart;
+  if (Math.abs(dx) > 40){ goTo(dx < 0 ? ti + 1 : ti - 1); stopAuto(); startAuto(); }
+  txStart = null;
+}, {passive:true});
 
 addEventListener('resize', () => renderMarquee(currentLang));
 setLang(currentLang);
