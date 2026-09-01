@@ -156,7 +156,7 @@
   .btn-wa:hover{transform:translateY(-3px)}
   .hero-stats{display:flex;gap:38px;margin-top:50px;flex-wrap:wrap}
   .hero-stats b{font-size:1.7rem;color:var(--gold-2);display:block}
-  .hero-stats span{font-size:.85rem;opacity:.8}
+  .hero-stats div > span{font-size:.85rem;opacity:.8}
   .hero-img{position:relative}
   .hero-img img{border-radius:24px;box-shadow:0 30px 60px rgba(0,0,0,.45);border:4px solid rgba(255,255,255,.14);width:100%;object-fit:cover}
   .chip{position:absolute;background:#fff;color:var(--brown);padding:10px 18px;border-radius:40px;font-weight:700;font-size:.85rem;box-shadow:0 10px 24px rgba(0,0,0,.35);display:inline-flex;align-items:center;gap:6px}
@@ -274,9 +274,16 @@
   /* ---------- Reveal animation ---------- */
   .reveal{opacity:0;transform:translateY(30px);transition:.7s}
   .reveal.show{opacity:1;transform:none}
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-2));z-index:70}
+  .gal img{cursor:zoom-in}
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:80;cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+  .lightbox .close{position:absolute;top:18px;right:24px;color:#fff;font-size:2.4rem;cursor:pointer;background:none;border:none;line-height:1}
 </style>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
 <header id="header">
   <div class="wrap nav">
@@ -500,6 +507,7 @@
 
 <a class="float-wa" data-wa="wa.float" target="_blank" aria-label="Chat WhatsApp">💬</a>
 <button class="scroll-top" id="scrollTop" aria-label="Kembali ke atas">↑</button>
+<div class="lightbox" id="lightbox"><img src="" alt="Gula aren bubuk"><button class="close" id="lbClose" aria-label="Tutup">✕</button></div>
 
 <script>
 const I18N = {
@@ -717,6 +725,25 @@ document.querySelectorAll('.faq-q').forEach(q => q.addEventListener('click', () 
 const st = document.getElementById('scrollTop');
 addEventListener('scroll', () => st.classList.toggle('show', scrollY > 600));
 st.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+
+// Scroll progress
+const prog = document.getElementById('progress');
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  prog.style.width = (max > 0 ? (scrollY / max * 100) : 0) + '%';
+});
+
+// Gallery lightbox
+const lb = document.getElementById('lightbox');
+const lbImg = lb.querySelector('img');
+document.querySelectorAll('.gal img').forEach(img => img.addEventListener('click', () => {
+  lbImg.src = img.src;
+  lb.classList.add('open');
+}));
+lb.addEventListener('click', e => { if (e.target !== lbImg) lb.classList.remove('open'); });
+document.getElementById('lbClose').addEventListener('click', () => lb.classList.remove('open'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
 
 addEventListener('resize', () => renderMarquee(currentLang));
 setLang(currentLang);
