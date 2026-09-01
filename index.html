@@ -355,7 +355,7 @@
       </div>
     </div>
     <div class="hero-img reveal">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg" alt="Gula aren bubuk murni">
+      <img id="heroImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg" alt="Gula aren bubuk murni">
       <span class="chip tl" data-i18n="hero.chip1">🌱 100% Murni</span>
       <span class="chip br" data-i18n="hero.chip2">Rp 35.000 / kg</span>
     </div>
@@ -407,7 +407,7 @@
 
 <section id="tentang">
   <div class="wrap about">
-    <img class="reveal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Sang_pembuat_gula_aren.jpg/960px-Sang_pembuat_gula_aren.jpg" alt="Pengrajin gula aren Ogoamas">
+    <img class="reveal" id="aboutImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Sang_pembuat_gula_aren.jpg/960px-Sang_pembuat_gula_aren.jpg" alt="Pengrajin gula aren Ogoamas">
     <div class="reveal">
       <span class="sec-tag" data-i18n="tentang.tag">Tentang Kami</span>
       <h2 class="sec-title" data-i18n="tentang.title">Dari Nira Ogoamas Menjadi Gula Berkualitas</h2>
@@ -429,10 +429,10 @@
       <h2 class="sec-title" data-i18n="galeri.title">Lihat Produk Kami</h2>
     </div>
     <div class="gal">
-      <img class="reveal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg" alt="Gula aren bubuk">
-      <img class="reveal" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Gula_semut.jpg" alt="Gula aren bubuk">
-      <img class="reveal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gula_semut_ranau.jpg/960px-Gula_semut_ranau.jpg" alt="Gula aren bubuk">
-      <img class="reveal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ginger_palm_sugar.jpg/960px-Ginger_palm_sugar.jpg" alt="Gula aren bubuk">
+      <img class="reveal" id="gal1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg" alt="Gula aren bubuk">
+      <img class="reveal" id="gal2" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Gula_semut.jpg" alt="Gula aren bubuk">
+      <img class="reveal" id="gal3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gula_semut_ranau.jpg/960px-Gula_semut_ranau.jpg" alt="Gula aren bubuk">
+      <img class="reveal" id="gal4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ginger_palm_sugar.jpg/960px-Ginger_palm_sugar.jpg" alt="Gula aren bubuk">
     </div>
   </div>
 </section>
@@ -783,6 +783,37 @@ async function loadProducts(){
   renderProducts();
 }
 
+const SETTINGS_FALLBACK = {
+  hero_img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg',
+  about_img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Sang_pembuat_gula_aren.jpg/960px-Sang_pembuat_gula_aren.jpg',
+  gallery_1: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg',
+  gallery_2: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Gula_semut.jpg',
+  gallery_3: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gula_semut_ranau.jpg/960px-Gula_semut_ranau.jpg',
+  gallery_4: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Ginger_palm_sugar.jpg/960px-Ginger_palm_sugar.jpg'
+};
+function applySettings(s){
+  const map = { hero_img:'heroImg', about_img:'aboutImg', gallery_1:'gal1', gallery_2:'gal2', gallery_3:'gal3', gallery_4:'gal4' };
+  for (const k in map) {
+    const el = document.getElementById(map[k]);
+    if (el && s[k]) el.src = s[k];
+  }
+}
+async function loadSettings(){
+  let settings = {};
+  if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/settings?select=key,value', {
+        headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY }
+      });
+      if (res.ok) {
+        const rows = await res.json();
+        rows.forEach(r => settings[r.key] = r.value);
+      }
+    } catch (e) {}
+  }
+  applySettings(Object.assign({}, SETTINGS_FALLBACK, settings));
+}
+
 function setLang(lang){
   currentLang = lang;
   localStorage.setItem('lang', lang);
@@ -980,6 +1011,7 @@ orderForm.addEventListener('submit', async (e) => {
 addEventListener('resize', () => renderMarquee(currentLang));
 setLang(currentLang);
 loadProducts();
+loadSettings();
 </script>
 </body>
 </html>
