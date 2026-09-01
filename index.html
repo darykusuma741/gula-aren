@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gula Areng — Gula Aren Bubuk Asli Ogoamas, Sulawesi Tengah</title>
+<meta name="description" content="Gula aren bubuk murni dari Ogoamas, Sulawesi Tengah. 100% alami tanpa campuran. Kirim se-Indonesia. Order via WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brown:#2e1a0e; --brown-2:#4a2c17; --cream:#fdf7ec; --cream-2:#f6e8cf;
+    --gold:#c98a2d; --gold-2:#e8b45a; --green:#2e7d32; --wa:#25D366;
+    --shadow:0 10px 30px rgba(46,26,14,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',system-ui,sans-serif;color:var(--brown);background:var(--cream);line-height:1.6;overflow-x:hidden}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+
+  /* ---------- Header ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;padding:18px 0}
+  header.scrolled{background:rgba(46,26,14,.95);padding:12px 0;box-shadow:0 4px 20px rgba(0,0,0,.2);backdrop-filter:blur(8px)}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:800;display:flex;align-items:center;gap:9px}
+  .logo em{color:var(--gold-2);font-style:normal}
+  .logo .leaf{background:var(--gold);color:var(--brown);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-size:1.1rem}
+  .right{display:flex;align-items:center;gap:18px}
+  nav a{color:#fff;margin-left:26px;font-size:.95rem;opacity:.9;position:relative}
+  nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--gold-2);transition:.3s}
+  nav a:hover::after{width:100%}
+  .lang{display:flex;background:rgba(255,255,255,.14);border-radius:40px;padding:4px}
+  .lang-btn{background:none;border:none;color:#fff;font-size:.8rem;font-weight:600;padding:6px 14px;border-radius:40px;cursor:pointer;transition:.2s}
+  .lang-btn.active{background:var(--gold-2);color:var(--brown)}
+  .hamburger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+  @media(max-width:768px){
+    nav{position:fixed;top:0;right:-100%;height:100vh;width:70%;background:var(--brown);flex-direction:column;padding:90px 30px;transition:.35s;gap:26px}
+    nav.open{right:0}
+    nav a{margin:0;font-size:1.2rem}
+    .hamburger{display:block;z-index:60}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;
+    background:linear-gradient(115deg,rgba(46,26,14,.93),rgba(74,44,23,.74)),url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg') center/cover}
+  .hero .wrap{position:relative;z-index:2;padding-top:110px;padding-bottom:80px}
+  .badge{display:inline-block;background:rgba(201,138,45,.2);border:1px solid var(--gold-2);color:var(--gold-2);padding:7px 18px;border-radius:40px;font-size:.85rem;margin-bottom:22px;letter-spacing:.5px}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,4rem);line-height:1.15;margin-bottom:18px}
+  .hero h1 span{color:var(--gold-2)}
+  .hero p{max-width:600px;font-size:1.1rem;opacity:.92;margin-bottom:34px}
+  .cta{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 32px;border-radius:50px;font-weight:600;font-size:1rem;transition:.25s;cursor:pointer;border:none}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#2e1a0e;box-shadow:0 8px 24px rgba(201,138,45,.4)}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(201,138,45,.55)}
+  .btn-outline{background:transparent;border:2px solid #fff;color:#fff}
+  .btn-outline:hover{background:#fff;color:var(--brown)}
+  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.4)}
+  .btn-wa:hover{transform:translateY(-3px)}
+
+  .hero-stats{display:flex;gap:40px;margin-top:54px;flex-wrap:wrap}
+  .hero-stats b{font-size:1.7rem;color:var(--gold-2);display:block}
+  .hero-stats span{font-size:.85rem;opacity:.8}
+
+  /* ---------- Marquee ---------- */
+  .marquee{background:linear-gradient(90deg,var(--gold),var(--gold-2));overflow:hidden;padding:14px 0}
+  .marquee-track{display:flex;width:max-content;animation:scroll 26s linear infinite;color:var(--brown);font-weight:600;font-size:.95rem}
+  .marquee-track span{padding:0 34px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- Sections ---------- */
+  section{padding:84px 0}
+  .sec-tag{color:var(--gold);font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:.8rem}
+  .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);margin:10px 0 14px}
+  .sec-sub{color:var(--brown-2);max-width:640px}
+  .center{text-align:center}
+  .center .sec-sub{margin:0 auto}
+
+  /* ---------- Produk ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;margin-top:46px}
+  .card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:.3s;position:relative;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(46,26,14,.18)}
+  .card .tag{position:absolute;top:14px;left:14px;background:var(--green);color:#fff;font-size:.72rem;padding:5px 12px;border-radius:30px;font-weight:600;z-index:2}
+  .card .imgbox{overflow:hidden}
+  .card img{width:100%;height:190px;object-fit:cover;transition:.45s}
+  .card:hover img{transform:scale(1.07)}
+  .card-body{padding:24px;display:flex;flex-direction:column;flex:1}
+  .card-body h3{font-size:1.2rem;margin-bottom:8px}
+  .card-body p{font-size:.9rem;color:var(--brown-2);flex:1}
+  .price-row{display:flex;align-items:baseline;justify-content:space-between;margin-top:18px}
+  .price{font-size:1.5rem;font-weight:800;color:var(--green)}
+  .unit{font-size:.82rem;color:var(--brown-2)}
+  .order-mini{margin-top:16px;background:var(--cream-2);color:var(--brown);text-align:center;padding:10px;border-radius:12px;font-weight:600;font-size:.9rem;transition:.2s}
+  .order-mini:hover{background:var(--gold-2)}
+
+  /* ---------- Keunggulan ---------- */
+  .keunggulan{background:var(--brown);color:#fff}
+  .keunggulan .sec-sub{color:#d9c7b1}
+  .fitur{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:30px;margin-top:46px}
+  .fitur-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:30px 24px;transition:.3s}
+  .fitur-item:hover{background:rgba(255,255,255,.1);transform:translateY(-5px)}
+  .fitur-item .icon{font-size:2.4rem;margin-bottom:14px}
+  .fitur-item h4{margin-bottom:8px;font-size:1.1rem}
+  .fitur-item p{font-size:.88rem;color:#d9c7b1}
+
+  /* ---------- Tentang ---------- */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .about img{border-radius:22px;box-shadow:var(--shadow);height:100%;object-fit:cover}
+  .about ul{list-style:none;margin-top:20px}
+  .about li{padding-left:30px;position:relative;margin-bottom:12px;font-size:.95rem}
+  .about li::before{content:'✔';position:absolute;left:0;color:var(--green);font-weight:700}
+  @media(max-width:820px){.about{grid-template-columns:1fr}}
+
+  /* ---------- Testimoni ---------- */
+  .testi{background:var(--cream-2)}
+  .tcard{background:#fff;border-radius:18px;padding:28px;box-shadow:var(--shadow)}
+  .tcard .stars{color:var(--gold);margin-bottom:12px;letter-spacing:2px}
+  .tcard p{font-size:.93rem;margin-bottom:18px}
+  .tcard .who{display:flex;align-items:center;gap:12px}
+  .tcard .ava{width:44px;height:44px;border-radius:50%;background:var(--gold-2);display:grid;place-items:center;font-weight:700;color:var(--brown)}
+  .tcard .who b{display:block;font-size:.95rem}
+  .tcard .who span{font-size:.8rem;color:var(--brown-2)}
+
+  /* ---------- Lokasi ---------- */
+  .lokasi-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch;margin-top:46px}
+  .info-box{background:#fff;border-radius:20px;padding:32px;box-shadow:var(--shadow)}
+  .info-box .row{display:flex;gap:14px;margin-bottom:22px;align-items:flex-start}
+  .info-box .row .ic{font-size:1.4rem;min-width:26px;text-align:center}
+  .info-box .row b{display:block;font-size:.82rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+  .info-box .row p{font-size:.95rem}
+  .map{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);min-height:360px}
+  .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  @media(max-width:820px){.lokasi-grid{grid-template-columns:1fr}}
+
+  /* ---------- CTA final ---------- */
+  .final{background:linear-gradient(135deg,var(--brown),var(--brown-2));color:#fff;text-align:center}
+  .final h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+  .final p{opacity:.9;max-width:560px;margin:0 auto 28px}
+
+  footer{background:var(--brown);color:#cbb49a;text-align:center;padding:26px;font-size:.85rem}
+  footer a{color:var(--gold-2)}
+
+  /* ---------- Floating WA ---------- */
+  .float-wa{position:fixed;bottom:24px;right:24px;z-index:40;width:60px;height:60px;background:var(--wa);border-radius:50%;display:grid;place-items:center;font-size:1.9rem;color:#fff;box-shadow:0 8px 24px rgba(37,211,102,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:.7s}
+  .reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="leaf">🌴</span>Gula<em>Areng</em></a>
+    <div class="right">
+      <nav id="nav">
+        <a href="#produk" data-i18n="nav.produk">Produk</a>
+        <a href="#keunggulan" data-i18n="nav.keunggulan">Keunggulan</a>
+        <a href="#tentang" data-i18n="nav.tentang">Tentang</a>
+        <a href="#lokasi" data-i18n="nav.lokasi">Lokasi</a>
+        <a href="#order" data-i18n="nav.kontak">Kontak</a>
+      </nav>
+      <div class="lang" id="langToggle">
+        <button class="lang-btn" data-lang="id">ID</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="badge" data-i18n="hero.badge">🌱 Gula Aren Bubuk Murni · Sulawesi Tengah</span>
+    <h1 data-i18n-html="hero.title">Manis Alami dari <span>Nira Aren</span> Ogoamas</h1>
+    <p data-i18n="hero.desc">Gula aren bubuk murni dari Ogoamas, Sulawesi Tengah. Diproses secara tradisional untuk rasa manis alami yang sehat dan aroma khas aren. Cocok untuk rumah tangga hingga usaha kuliner.</p>
+    <div class="cta">
+      <a href="#order" class="btn btn-wa" data-i18n="hero.cta1">💬 Pesan via WhatsApp</a>
+      <a href="#produk" class="btn btn-outline" data-i18n="hero.cta2">Lihat Harga</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>100%</b><span data-i18n="stat1">Gula aren murni</span></div>
+      <div><b>3</b><span data-i18n="stat2">Varian ukuran</span></div>
+      <div><b>24</b><span data-i18n="stat3">Jam siap kirim</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marqueeTrack"></div></div>
+
+<section id="produk">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag" data-i18n="produk.tag">Produk Kami</span>
+      <h2 class="sec-title" data-i18n="produk.title">Pilih Sesuai Kebutuhan</h2>
+      <p class="sec-sub" data-i18n="produk.sub">Gula aren bubuk murni dalam berbagai ukuran. Harga lebih hemat untuk pembelian grosir.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal">
+        <span class="tag" data-i18n="card1.tag">Terlaris</span>
+        <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Gula_aren_semut.jpg/960px-Gula_aren_semut.jpg" alt="Gula aren bubuk 1 kg"></div>
+        <div class="card-body">
+          <h3 data-i18n="card1.title">Gula Aren Bubuk · 1 Kg</h3>
+          <p data-i18n="card1.desc">Bubuk aren murni kemasan besar untuk kebutuhan dapur &amp; produksi usaha. Paling hemat.</p>
+          <div class="price-row"><span class="price">Rp 35.000</span><span class="unit">/ kg</span></div>
+          <a class="order-mini" data-wa="wa.card1" target="_blank" data-i18n="order.now">Order Sekarang</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Gula_semut.jpg" alt="Gula aren bubuk setengah kilo"></div>
+        <div class="card-body">
+          <h3 data-i18n="card2.title">Gula Aren Bubuk · 500 gr</h3>
+          <p data-i18n="card2.desc">Setengah kilo bubuk aren murni, pas untuk stok rumah tangga harian.</p>
+          <div class="price-row"><span class="price">Rp 20.000</span><span class="unit">/ 500 gr</span></div>
+          <a class="order-mini" data-wa="wa.card2" target="_blank" data-i18n="order.now">Order Sekarang</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="imgbox"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Gula_semut_ranau.jpg/960px-Gula_semut_ranau.jpg" alt="Gula aren bubuk 330 gram"></div>
+        <div class="card-body">
+          <h3 data-i18n="card3.title">Gula Aren Bubuk · 330 gr</h3>
+          <p data-i18n="card3.desc">Kemasan kecil bubuk aren murni, cocok untuk mencoba atau oleh-oleh.</p>
+          <div class="price-row"><span class="price">Rp 12.000</span><span class="unit">/ 330 gr</span></div>
+          <a class="order-mini" data-wa="wa.card3" target="_blank" data-i18n="order.now">Order Sekarang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="keunggulan" class="keunggulan">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag" data-i18n="keunggulan.tag">Kenapa Kami</span>
+      <h2 class="sec-title" data-i18n="keunggulan.title">Kualitas yang Bisa Dipercaya</h2>
+      <p class="sec-sub" data-i18n="keunggulan.sub">Kami menjaga kualitas dari pohon aren sampai ke tangan Anda.</p>
+    </div>
+    <div class="fitur">
+      <div class="fitur-item reveal"><div class="icon">🌱</div><h4 data-i18n="f1.title">100% Alami</h4><p data-i18n="f1.desc">Tanpa pengawet, pewarna, dan campuran gula lain.</p></div>
+      <div class="fitur-item reveal"><div class="icon">🤝</div><h4 data-i18n="f2.title">Harga Bersahabat</h4><p data-i18n="f2.desc">Langsung dari pengrajin, tanpa perantara.</p></div>
+      <div class="fitur-item reveal"><div class="icon">🚚</div><h4 data-i18n="f3.title">Kirim Se-Indonesia</h4><p data-i18n="f3.desc">Pengemasan rapi dan aman sampai tujuan.</p></div>
+      <div class="fitur-item reveal"><div class="icon">💰</div><h4 data-i18n="f4.title">Grosir &amp; Eceran</h4><p data-i18n="f4.desc">Harga khusus untuk reseller dan usaha kuliner.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="wrap about">
+    <img class="reveal" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Sang_pembuat_gula_aren.jpg/960px-Sang_pembuat_gula_aren.jpg" alt="Pengrajin gula aren Ogoamas">
+    <div class="reveal">
+      <span class="sec-tag" data-i18n="tentang.tag">Tentang Kami</span>
+      <h2 class="sec-title" data-i18n="tentang.title">Dari Nira Ogoamas Menjadi Gula Berkualitas</h2>
+      <p class="sec-sub" data-i18n="tentang.desc">Gula Areng dihasilkan dari nira aren segar yang disadap langsung dari pohon aren pilihan di Ogoamas, Sulawesi Tengah. Diproses secara higienis dan tradisional agar rasa manis alaminya tetap terjaga.</p>
+      <ul>
+        <li data-i18n="about.l1">Nira disadap segar setiap pagi</li>
+        <li data-i18n="about.l2">Dimasak tanpa bahan kimia tambahan</li>
+        <li data-i18n="about.l3">Dikemas higienis dan kedap udara</li>
+        <li data-i18n="about.l4">Siap dikirim ke seluruh Indonesia</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="testimoni" class="testi">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag" data-i18n="testi.tag">Testimoni</span>
+      <h2 class="sec-title" data-i18n="testi.title">Kata Pelanggan Kami</h2>
+    </div>
+    <div class="grid">
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="t1.text">Gula arennya asli dan wangi. Saya pakai untuk usaha kopi susu, pelanggan pada suka. Harga grosir juga enak.</p>
+        <div class="who"><div class="ava">R</div><div><b data-i18n="t1.name">Rina</b><span data-i18n="t1.role">Pemilik kedai kopi, Depok</span></div></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="t2.text">Pengirimannya cepat dan kemasannya rapi. Gula arennya manis alami, enggak bikin enek. Pasti repeat order.</p>
+        <div class="who"><div class="ava">D</div><div><b data-i18n="t2.name">Dedi</b><span data-i18n="t2.role">Pelanggan, Jakarta</span></div></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="t3.text">Sudah langganan dari dulu. Kualitasnya konsisten, cocok banget untuk produksi dawet dan cendol saya.</p>
+        <div class="who"><div class="ava">S</div><div><b data-i18n="t3.name">Siti</b><span data-i18n="t3.role">UMKM kuliner, Bogor</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lokasi">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="sec-tag" data-i18n="lokasi.tag">Lokasi</span>
+      <h2 class="sec-title" data-i18n="lokasi.title">Kunjungi Toko Kami</h2>
+      <p class="sec-sub" data-i18n="lokasi.sub">Datang langsung atau order online, kami siap melayani.</p>
+    </div>
+    <div class="lokasi-grid">
+      <div class="info-box reveal">
+        <div class="row"><span class="ic">📍</span><div><b data-i18n="loc.addr.label">Alamat</b><p>Jl. Deposito No. A 19/20, Komplek BDN, Sawangan, Depok</p></div></div>
+        <div class="row"><span class="ic">📞</span><div><b data-i18n="loc.telp.label">Telepon / WhatsApp</b><p>0882-4608-1309</p></div></div>
+        <div class="row"><span class="ic">🕐</span><div><b data-i18n="loc.jam.label">Jam Operasional</b><p data-i18n="loc.jam.value">Setiap hari · 08.00 – 20.00 WIB</p></div></div>
+        <a class="btn btn-gold" href="https://maps.app.goo.gl/79VxcWJ8U8ZmFQ919" target="_blank" style="margin-top:8px" data-i18n="lokasi.mapbtn">🗺️ Buka di Google Maps</a>
+      </div>
+      <div class="map reveal">
+        <iframe src="https://maps.google.com/maps?q=Jl.%20Deposito%20No.%20A%2019%2F20%20Komplek%20BDN%20Sawangan%20Depok&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="order" class="final">
+  <div class="wrap reveal">
+    <h2 data-i18n="final.title">Siap Pesan Gula Aren Asli?</h2>
+    <p data-i18n="final.desc">Hubungi kami langsung via WhatsApp untuk pemesanan, harga grosir, atau konsultasi produk.</p>
+    <a class="btn btn-wa" data-wa="wa.final" target="_blank" data-i18n="final.btn">💬 Chat WhatsApp Sekarang</a>
+  </div>
+</section>
+
+<footer>© 2026 <b>Gula Areng</b> · <span data-i18n="footer.text">Gula aren bubuk asli Ogoamas, Sulawesi Tengah</span> · Jl. Deposito No. A 19/20, Komplek BDN, Sawangan, Depok · <a href="tel:088246081309">0882-4608-1309</a></footer>
+
+<a class="float-wa" data-wa="wa.float" target="_blank" aria-label="Chat WhatsApp">💬</a>
+
+<script>
+const I18N = {
+  id: {
+    'meta.title': 'Gula Areng — Gula Aren Bubuk Asli Ogoamas, Sulawesi Tengah',
+    'meta.desc': 'Gula aren bubuk murni dari Ogoamas, Sulawesi Tengah. 100% alami tanpa campuran. Kirim se-Indonesia. Order via WhatsApp.',
+    'nav.produk': 'Produk', 'nav.keunggulan': 'Keunggulan', 'nav.tentang': 'Tentang',
+    'nav.lokasi': 'Lokasi', 'nav.kontak': 'Kontak',
+    'hero.badge': '🌱 Gula Aren Bubuk Murni · Sulawesi Tengah',
+    'hero.title': 'Manis Alami dari <span>Nira Aren</span> Ogoamas',
+    'hero.desc': 'Gula aren bubuk murni dari Ogoamas, Sulawesi Tengah. Diproses secara tradisional untuk rasa manis alami yang sehat dan aroma khas aren. Cocok untuk rumah tangga hingga usaha kuliner.',
+    'hero.cta1': '💬 Pesan via WhatsApp', 'hero.cta2': 'Lihat Harga',
+    'stat1': 'Gula aren murni', 'stat2': 'Varian ukuran', 'stat3': 'Jam siap kirim',
+    'produk.tag': 'Produk Kami', 'produk.title': 'Pilih Sesuai Kebutuhan',
+    'produk.sub': 'Gula aren bubuk murni dalam berbagai ukuran. Harga lebih hemat untuk pembelian grosir.',
+    'card1.tag': 'Terlaris', 'card1.title': 'Gula Aren Bubuk · 1 Kg',
+    'card1.desc': 'Bubuk aren murni kemasan besar untuk kebutuhan dapur & produksi usaha. Paling hemat.',
+    'card2.title': 'Gula Aren Bubuk · 500 gr', 'card2.desc': 'Setengah kilo bubuk aren murni, pas untuk stok rumah tangga harian.',
+    'card3.title': 'Gula Aren Bubuk · 330 gr', 'card3.desc': 'Kemasan kecil bubuk aren murni, cocok untuk mencoba atau oleh-oleh.',
+    'order.now': 'Order Sekarang',
+    'keunggulan.tag': 'Kenapa Kami', 'keunggulan.title': 'Kualitas yang Bisa Dipercaya',
+    'keunggulan.sub': 'Kami menjaga kualitas dari pohon aren sampai ke tangan Anda.',
+    'f1.title': '100% Alami', 'f1.desc': 'Tanpa pengawet, pewarna, dan campuran gula lain.',
+    'f2.title': 'Harga Bersahabat', 'f2.desc': 'Langsung dari pengrajin, tanpa perantara.',
+    'f3.title': 'Kirim Se-Indonesia', 'f3.desc': 'Pengemasan rapi dan aman sampai tujuan.',
+    'f4.title': 'Grosir & Eceran', 'f4.desc': 'Harga khusus untuk reseller dan usaha kuliner.',
+    'tentang.tag': 'Tentang Kami', 'tentang.title': 'Dari Nira Ogoamas Menjadi Gula Berkualitas',
+    'tentang.desc': 'Gula Areng dihasilkan dari nira aren segar yang disadap langsung dari pohon aren pilihan di Ogoamas, Sulawesi Tengah. Diproses secara higienis dan tradisional agar rasa manis alaminya tetap terjaga.',
+    'about.l1': 'Nira disadap segar setiap pagi', 'about.l2': 'Dimasak tanpa bahan kimia tambahan',
+    'about.l3': 'Dikemas higienis dan kedap udara', 'about.l4': 'Siap dikirim ke seluruh Indonesia',
+    'testi.tag': 'Testimoni', 'testi.title': 'Kata Pelanggan Kami',
+    't1.text': 'Gula arennya asli dan wangi. Saya pakai untuk usaha kopi susu, pelanggan pada suka. Harga grosir juga enak.',
+    't1.name': 'Rina', 't1.role': 'Pemilik kedai kopi, Depok',
+    't2.text': 'Pengirimannya cepat dan kemasannya rapi. Gula arennya manis alami, enggak bikin enek. Pasti repeat order.',
+    't2.name': 'Dedi', 't2.role': 'Pelanggan, Jakarta',
+    't3.text': 'Sudah langganan dari dulu. Kualitasnya konsisten, cocok banget untuk produksi dawet dan cendol saya.',
+    't3.name': 'Siti', 't3.role': 'UMKM kuliner, Bogor',
+    'lokasi.tag': 'Lokasi', 'lokasi.title': 'Kunjungi Toko Kami', 'lokasi.sub': 'Datang langsung atau order online, kami siap melayani.',
+    'loc.addr.label': 'Alamat', 'loc.telp.label': 'Telepon / WhatsApp', 'loc.jam.label': 'Jam Operasional',
+    'loc.jam.value': 'Setiap hari · 08.00 – 20.00 WIB', 'lokasi.mapbtn': '🗺️ Buka di Google Maps',
+    'final.title': 'Siap Pesan Gula Aren Asli?',
+    'final.desc': 'Hubungi kami langsung via WhatsApp untuk pemesanan, harga grosir, atau konsultasi produk.',
+    'final.btn': '💬 Chat WhatsApp Sekarang',
+    'footer.text': 'Gula aren bubuk asli Ogoamas, Sulawesi Tengah',
+    'wa.card1': 'Halo, saya mau pesan Gula Aren Bubuk 1 kg (Rp 35.000).',
+    'wa.card2': 'Halo, saya mau pesan Gula Aren Bubuk 500 gr (Rp 20.000).',
+    'wa.card3': 'Halo, saya mau pesan Gula Aren Bubuk 330 gr (Rp 12.000).',
+    'wa.final': 'Halo Gula Areng, saya mau pesan gula aren bubuk.',
+    'wa.float': 'Halo, saya mau pesan gula aren bubuk.',
+    'marquee': ['100% Alami','Tanpa Campuran','Dari Ogoamas, Sulawesi Tengah','Kirim Se-Indonesia','Harga Grosir Tersedia']
+  },
+  en: {
+    'meta.title': 'Gula Areng — Authentic Palm Sugar Powder from Central Sulawesi',
+    'meta.desc': 'Pure palm sugar powder from Ogoamas, Central Sulawesi. 100% natural, no additives. Nationwide shipping. Order via WhatsApp.',
+    'nav.produk': 'Products', 'nav.keunggulan': 'Why Us', 'nav.tentang': 'About',
+    'nav.lokasi': 'Location', 'nav.kontak': 'Contact',
+    'hero.badge': '🌱 Pure Palm Sugar Powder · Central Sulawesi',
+    'hero.title': 'Natural Sweetness from <span>Ogoamas</span> Palm Sap',
+    'hero.desc': 'Pure palm sugar powder from Ogoamas, Central Sulawesi. Traditionally crafted for a healthy natural sweetness and signature aroma — perfect for home kitchens and culinary businesses.',
+    'hero.cta1': '💬 Order via WhatsApp', 'hero.cta2': 'View Prices',
+    'stat1': 'Pure palm sugar', 'stat2': 'Size options', 'stat3': 'hrs ready to ship',
+    'produk.tag': 'Our Products', 'produk.title': 'Pick Your Size',
+    'produk.sub': 'Pure palm sugar powder in various sizes. Better prices for wholesale orders.',
+    'card1.tag': 'Best Seller', 'card1.title': 'Palm Sugar Powder · 1 kg',
+    'card1.desc': 'Pure palm sugar in a large pack for the kitchen and business production. Best value.',
+    'card2.title': 'Palm Sugar Powder · 500 g', 'card2.desc': 'Half a kilo of pure palm sugar, perfect for daily household use.',
+    'card3.title': 'Palm Sugar Powder · 330 g', 'card3.desc': 'Small pack of pure palm sugar, great for trying out or as a gift.',
+    'order.now': 'Order Now',
+    'keunggulan.tag': 'Why Us', 'keunggulan.title': 'Quality You Can Trust',
+    'keunggulan.sub': 'We maintain quality from the palm tree to your hands.',
+    'f1.title': '100% Natural', 'f1.desc': 'No preservatives, coloring, or other sugars added.',
+    'f2.title': 'Friendly Prices', 'f2.desc': 'Direct from the makers, no middlemen.',
+    'f3.title': 'Nationwide Shipping', 'f3.desc': 'Neatly packed and delivered safely.',
+    'f4.title': 'Wholesale & Retail', 'f4.desc': 'Special pricing for resellers and culinary businesses.',
+    'tentang.tag': 'About Us', 'tentang.title': 'From Ogoamas Sap to Quality Sugar',
+    'tentang.desc': 'Gula Areng is made from fresh palm sap tapped directly from selected palm trees in Ogoamas, Central Sulawesi. Processed hygienically and traditionally to preserve its natural sweetness.',
+    'about.l1': 'Fresh sap tapped every morning', 'about.l2': 'Cooked without added chemicals',
+    'about.l3': 'Hygienically packed and air-tight', 'about.l4': 'Ready to ship across Indonesia',
+    'testi.tag': 'Testimonials', 'testi.title': 'What Our Customers Say',
+    't1.text': 'The palm sugar is genuine and fragrant. I use it for my coffee business and customers love it. Wholesale prices are great too.',
+    't1.name': 'Rina', 't1.role': 'Coffee shop owner, Depok',
+    't2.text': 'Fast shipping and neat packaging. The sweetness is natural, not cloying. Will definitely reorder.',
+    't2.name': 'Dedi', 't2.role': 'Customer, Jakarta',
+    't3.text': 'A long-time regular. Quality is consistent, perfect for my dawet and cendol production.',
+    't3.name': 'Siti', 't3.role': 'Culinary MSME, Bogor',
+    'lokasi.tag': 'Location', 'lokasi.title': 'Visit Our Store', 'lokasi.sub': 'Visit in person or order online — we\'re ready to serve.',
+    'loc.addr.label': 'Address', 'loc.telp.label': 'Phone / WhatsApp', 'loc.jam.label': 'Opening Hours',
+    'loc.jam.value': 'Every day · 08:00 – 20:00 WIB', 'lokasi.mapbtn': '🗺️ Open in Google Maps',
+    'final.title': 'Ready to Order Authentic Palm Sugar?',
+    'final.desc': 'Contact us directly via WhatsApp for orders, wholesale pricing, or product questions.',
+    'final.btn': '💬 Chat on WhatsApp Now',
+    'footer.text': 'Authentic palm sugar powder from Ogoamas, Central Sulawesi',
+    'wa.card1': 'Hi, I\'d like to order 1 kg Palm Sugar Powder (IDR 35,000).',
+    'wa.card2': 'Hi, I\'d like to order 500 g Palm Sugar Powder (IDR 20,000).',
+    'wa.card3': 'Hi, I\'d like to order 330 g Palm Sugar Powder (IDR 12,000).',
+    'wa.final': 'Hi Gula Areng, I\'d like to order palm sugar powder.',
+    'wa.float': 'Hi, I\'d like to order palm sugar powder.',
+    'marquee': ['100% Natural','No Additives','From Ogoamas, Central Sulawesi','Nationwide Shipping','Wholesale Available']
+  }
+};
+
+const WA = '6288246081309';
+let currentLang = localStorage.getItem('lang') || 'id';
+
+function renderMarquee(lang){
+  const items = I18N[lang].marquee;
+  const copy = items.map(t => `<span>${t}</span>`).join('');
+  const track = document.getElementById('marqueeTrack');
+  track.innerHTML = copy;
+  const cw = track.scrollWidth;
+  let n = Math.ceil((window.innerWidth * 2) / cw);
+  if (n % 2) n++;
+  track.innerHTML = copy.repeat(Math.max(2, n));
+}
+
+function setLang(lang){
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  document.title = I18N[lang]['meta.title'];
+  document.querySelector('meta[name="description"]').setAttribute('content', I18N[lang]['meta.desc']);
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (I18N[lang][k] !== undefined) el.textContent = I18N[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if (I18N[lang][k] !== undefined) el.innerHTML = I18N[lang][k];
+  });
+  document.querySelectorAll('a[data-wa]').forEach(a => {
+    const msg = I18N[lang][a.dataset.wa] || '';
+    a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+  });
+  renderMarquee(lang);
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+}
+
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+// Sticky header
+const header = document.getElementById('header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 40));
+
+// Mobile menu
+const nav = document.getElementById('nav');
+document.getElementById('hamburger').addEventListener('click', () => {
+  nav.classList.toggle('open');
+  document.getElementById('hamburger').textContent = nav.classList.contains('open') ? '✕' : '☰';
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  document.getElementById('hamburger').textContent = '☰';
+}));
+
+// Reveal on scroll
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+}), {threshold: .12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+addEventListener('resize', () => renderMarquee(currentLang));
+setLang(currentLang);
+</script>
+</body>
+</html>
