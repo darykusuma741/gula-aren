@@ -45,8 +45,27 @@ insert into products (sort_order, badge_id, badge_en, image, title_id, title_en,
  'Small pack of pure palm sugar, great for trying out or as a gift.',
  15000, 0.95, '/ 330 gr', '/ 11.6 oz');
 
+-- 4. Tabel pesanan (dari form order)
+create table if not exists orders (
+  id bigint generated always as identity primary key,
+  created_at timestamptz not null default now(),
+  name text not null,
+  phone text not null,
+  product text not null,
+  quantity int not null default 1,
+  address text,
+  note text,
+  status text not null default 'baru'
+);
+
+-- Publik boleh MENGIRIM pesanan (insert), tapi TIDAK boleh membaca data (privasi)
+alter table orders enable row level security;
+create policy "public insert" on orders for insert with check (true);
+
 -- =============================================================
 -- Cara update harga / produk nanti:
 --   update products set price_idr = 40000, price_usd = 2.50 where id = 1;
 --   (atau edit langsung lewat tabel di Dashboard Supabase)
+-- Cara lihat pesanan masuk:
+--   select * from orders order by created_at desc;
 -- =============================================================

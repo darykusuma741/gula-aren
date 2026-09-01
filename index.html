@@ -276,6 +276,19 @@
   .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 24px;color:var(--brown-2);font-size:.93rem}
   .faq-item.open .faq-a{max-height:400px;padding-bottom:20px}
 
+  /* ---------- Form Order ---------- */
+  .order-form{background:#fff}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .field{margin-bottom:18px;text-align:left}
+  .field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px;color:var(--brown)}
+  .field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1.5px solid #e6d5b8;border-radius:12px;font-family:inherit;font-size:.95rem;background:var(--cream);color:var(--brown);transition:.2s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(201,138,45,.15)}
+  .form-status{margin-top:16px;font-size:.95rem;font-weight:600;min-height:24px}
+  .form-status.ok{color:var(--green)}
+  .form-status.err{color:#c0392b}
+  #orderForm .btn{width:100%;justify-content:center}
+  @media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+
   /* ---------- CTA final ---------- */
   .final{background:linear-gradient(135deg,var(--brown),var(--brown-2));color:#fff;text-align:center}
   .final h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
@@ -314,6 +327,7 @@
         <a href="#keunggulan" data-i18n="nav.keunggulan">Keunggulan</a>
         <a href="#lokasi" data-i18n="nav.lokasi">Lokasi</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#pesan" data-i18n="nav.pesan">Pesan</a>
       </nav>
       <div class="lang" id="langToggle">
         <button class="lang-btn" data-lang="id">ID</button>
@@ -497,6 +511,48 @@
   </div>
 </section>
 
+<section id="pesan" class="order-form">
+  <div class="wrap" style="max-width:640px">
+    <div class="center reveal">
+      <span class="sec-tag" data-i18n="order.tag">Pesan Sekarang</span>
+      <h2 class="sec-title" data-i18n="order.title">Form Pemesanan</h2>
+      <p class="sec-sub" data-i18n="order.sub">Isi form di bawah, kami akan segera menghubungi kamu.</p>
+    </div>
+    <form id="orderForm" class="reveal" novalidate>
+      <div class="form-grid">
+        <div class="field">
+          <label data-i18n="form.name">Nama Lengkap</label>
+          <input type="text" id="fName" data-ph="form.name.ph" placeholder="Nama kamu" autocomplete="name">
+        </div>
+        <div class="field">
+          <label data-i18n="form.phone">Nomor WhatsApp</label>
+          <input type="tel" id="fPhone" data-ph="form.phone.ph" placeholder="Contoh: 0812xxxxxxx" autocomplete="tel">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label data-i18n="form.product">Pilih Produk</label>
+          <select id="fProduct"></select>
+        </div>
+        <div class="field">
+          <label data-i18n="form.qty">Jumlah</label>
+          <input type="number" id="fQty" min="1" value="1">
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="form.address">Alamat Pengiriman</label>
+        <textarea id="fAddress" rows="2" data-ph="form.address.ph" placeholder="Alamat lengkap"></textarea>
+      </div>
+      <div class="field">
+        <label data-i18n="form.note">Catatan (opsional)</label>
+        <textarea id="fNote" rows="2" data-ph="form.note.ph" placeholder="Contoh: kirim hari ini"></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold" id="submitBtn" data-i18n="form.submit">Kirim Pesanan</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+</section>
+
 <section id="order" class="final">
   <div class="wrap reveal">
     <h2 data-i18n="final.title">Siap Pesan Gula Aren Asli?</h2>
@@ -517,7 +573,7 @@ const I18N = {
     'meta.title': 'Gula Areng — Gula Aren Bubuk Asli Ogoamas, Sulawesi Tengah',
     'meta.desc': 'Gula aren bubuk murni dari Ogoamas, Sulawesi Tengah. 100% alami tanpa campuran. Kirim se-Indonesia. Order via WhatsApp.',
     'nav.produk': 'Produk', 'nav.cara': 'Cara Order', 'nav.keunggulan': 'Keunggulan',
-    'nav.lokasi': 'Lokasi', 'nav.faq': 'FAQ',
+    'nav.lokasi': 'Lokasi', 'nav.faq': 'FAQ', 'nav.pesan': 'Pesan',
     'hero.badge': '🌱 Gula Aren Bubuk Murni · Sulawesi Tengah',
     'hero.title': 'Manis Alami dari <span>Nira Aren</span> Ogoamas',
     'hero.desc': 'Gula aren bubuk murni dari Ogoamas, Sulawesi Tengah. Diproses secara tradisional untuk rasa manis alami yang sehat dan aroma khas aren. Cocok untuk rumah tangga hingga usaha kuliner.',
@@ -567,6 +623,17 @@ const I18N = {
     'final.title': 'Siap Pesan Gula Aren Asli?',
     'final.desc': 'Hubungi kami langsung via WhatsApp untuk pemesanan, harga grosir, atau konsultasi produk.',
     'final.btn': '💬 Chat WhatsApp Sekarang',
+    'order.tag': 'Pesan Sekarang', 'order.title': 'Form Pemesanan',
+    'order.sub': 'Isi form di bawah, kami akan segera menghubungi kamu.',
+    'form.name': 'Nama Lengkap', 'form.name.ph': 'Nama kamu',
+    'form.phone': 'Nomor WhatsApp', 'form.phone.ph': 'Contoh: 0812xxxxxxx',
+    'form.product': 'Pilih Produk', 'form.product.ph': 'Pilih produk...',
+    'form.qty': 'Jumlah', 'form.address': 'Alamat Pengiriman', 'form.address.ph': 'Alamat lengkap',
+    'form.note': 'Catatan (opsional)', 'form.note.ph': 'Contoh: kirim hari ini',
+    'form.submit': 'Kirim Pesanan', 'form.sending': 'Mengirim...',
+    'form.success': '✅ Pesanan terkirim! Kami akan segera menghubungi kamu via WhatsApp.',
+    'form.wa_sent': '✅ Pesanan dibuka di WhatsApp — tinggal tekan kirim. 😊',
+    'form.fill': 'Mohon isi nama, nomor WhatsApp, dan pilih produk.',
     'footer.text': 'Gula aren bubuk asli Ogoamas, Sulawesi Tengah',
     'wa.card1': 'Halo, saya mau pesan Gula Aren Bubuk 1 kg (Rp 35.000).',
     'wa.card2': 'Halo, saya mau pesan Gula Aren Bubuk 500 gr (Rp 20.000).',
@@ -579,7 +646,7 @@ const I18N = {
     'meta.title': 'Gula Areng — Authentic Palm Sugar Powder from Central Sulawesi',
     'meta.desc': 'Pure palm sugar powder from Ogoamas, Central Sulawesi. 100% natural, no additives. Nationwide shipping. Order via WhatsApp.',
     'nav.produk': 'Products', 'nav.cara': 'How to Order', 'nav.keunggulan': 'Why Us',
-    'nav.lokasi': 'Location', 'nav.faq': 'FAQ',
+    'nav.lokasi': 'Location', 'nav.faq': 'FAQ', 'nav.pesan': 'Order',
     'hero.badge': '🌱 Pure Palm Sugar Powder · Central Sulawesi',
     'hero.title': 'Natural Sweetness from <span>Ogoamas</span> Palm Sap',
     'hero.desc': 'Pure palm sugar powder from Ogoamas, Central Sulawesi. Traditionally crafted for a healthy natural sweetness and signature aroma — perfect for home kitchens and culinary businesses.',
@@ -629,6 +696,17 @@ const I18N = {
     'final.title': 'Ready to Order Authentic Palm Sugar?',
     'final.desc': 'Contact us directly via WhatsApp for orders, wholesale pricing, or product questions.',
     'final.btn': '💬 Chat on WhatsApp Now',
+    'order.tag': 'Order Now', 'order.title': 'Order Form',
+    'order.sub': 'Fill in the form below and we\'ll contact you shortly.',
+    'form.name': 'Full Name', 'form.name.ph': 'Your name',
+    'form.phone': 'WhatsApp Number', 'form.phone.ph': 'e.g. 0812xxxxxxx',
+    'form.product': 'Select Product', 'form.product.ph': 'Select product...',
+    'form.qty': 'Quantity', 'form.address': 'Shipping Address', 'form.address.ph': 'Full address',
+    'form.note': 'Note (optional)', 'form.note.ph': 'e.g. ship today',
+    'form.submit': 'Submit Order', 'form.sending': 'Sending...',
+    'form.success': '✅ Order sent! We\'ll contact you via WhatsApp soon.',
+    'form.wa_sent': '✅ Order opened in WhatsApp — just press send. 😊',
+    'form.fill': 'Please fill in your name, WhatsApp number, and select a product.',
     'footer.text': 'Authentic palm sugar powder from Ogoamas, Central Sulawesi',
     'wa.card1': 'Hi, I\'d like to order 1 kg Palm Sugar Powder (IDR 35,000).',
     'wa.card2': 'Hi, I\'d like to order 500 g Palm Sugar Powder (IDR 20,000).',
@@ -687,6 +765,7 @@ function renderProducts(){
         <a class="order-mini" href="${waLink(p)}" target="_blank">${I18N[currentLang]['order.now']}</a>
       </div>
     </div>`).join('');
+  populateProductSelect();
 }
 async function loadProducts(){
   if (SUPABASE_URL && SUPABASE_ANON_KEY) {
@@ -718,6 +797,10 @@ function setLang(lang){
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const k = el.getAttribute('data-i18n-html');
     if (I18N[lang][k] !== undefined) el.innerHTML = I18N[lang][k];
+  });
+  document.querySelectorAll('[data-ph]').forEach(el => {
+    const k = el.getAttribute('data-ph');
+    if (I18N[lang][k] !== undefined) el.placeholder = I18N[lang][k];
   });
   document.querySelectorAll('a[data-wa]').forEach(a => {
     const msg = I18N[lang][a.dataset.wa] || '';
@@ -827,6 +910,72 @@ tslider.addEventListener('touchend', e => {
   if (Math.abs(dx) > 40){ goTo(dx < 0 ? ti + 1 : ti - 1); stopAuto(); startAuto(); }
   txStart = null;
 }, {passive:true});
+
+// Order form
+function populateProductSelect(){
+  const sel = document.getElementById('fProduct');
+  if (!sel) return;
+  const ph = I18N[currentLang]['form.product.ph'];
+  sel.innerHTML = '<option value="" disabled selected>' + ph + '</option>' +
+    currentProducts.map(p => '<option value="' + productTitle(p) + '">' + productTitle(p) + ' — ' + productPrice(p) + '</option>').join('');
+}
+
+const orderForm = document.getElementById('orderForm');
+const formStatus = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+orderForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const product = document.getElementById('fProduct').value;
+  const qty = parseInt(document.getElementById('fQty').value) || 1;
+  const address = document.getElementById('fAddress').value.trim();
+  const note = document.getElementById('fNote').value.trim();
+
+  if (!name || !phone || !product) {
+    formStatus.className = 'form-status err';
+    formStatus.textContent = I18N[currentLang]['form.fill'];
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = I18N[currentLang]['form.sending'];
+
+  let saved = false;
+  if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/orders', {
+        method: 'POST',
+        headers: {
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: 'Bearer ' + SUPABASE_ANON_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ name: name, phone: phone, product: product, quantity: qty, address: address, note: note })
+      });
+      saved = res.ok;
+    } catch (err) { saved = false; }
+  }
+
+  if (saved) {
+    formStatus.className = 'form-status ok';
+    formStatus.textContent = I18N[currentLang]['form.success'];
+    orderForm.reset();
+    populateProductSelect();
+  } else {
+    const waMsg = currentLang === 'en'
+      ? "Hi, I'd like to order:\nProduct: " + product + "\nQty: " + qty + "\nName: " + name + "\nPhone: " + phone + "\nAddress: " + (address || '-') + "\nNote: " + (note || '-')
+      : 'Halo, saya mau pesan:\nProduk: ' + product + '\nJumlah: ' + qty + '\nNama: ' + name + '\nNo. HP: ' + phone + '\nAlamat: ' + (address || '-') + '\nCatatan: ' + (note || '-');
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(waMsg), '_blank');
+    formStatus.className = 'form-status ok';
+    formStatus.textContent = I18N[currentLang]['form.wa_sent'];
+  }
+
+  submitBtn.textContent = I18N[currentLang]['form.submit'];
+  submitBtn.disabled = false;
+});
 
 addEventListener('resize', () => renderMarquee(currentLang));
 setLang(currentLang);
