@@ -234,12 +234,14 @@
   .tslider{position:relative;max-width:700px;margin:46px auto 0;overflow:hidden}
   .ttrack{display:flex;transition:transform .5s ease}
   .tslide{flex:0 0 100%;padding:0 44px;box-sizing:border-box}
-  .tcard{background:#fff;border-radius:20px;padding:36px 30px;box-shadow:var(--shadow);text-align:center}
-  .tcard .stars{color:var(--gold);margin-bottom:14px;letter-spacing:2px;font-size:1.1rem}
-  .tcard p{font-size:1rem;margin-bottom:20px;color:var(--brown)}
-  .tcard .who{display:flex;align-items:center;gap:12px;justify-content:center}
-  .tcard .ava{width:48px;height:48px;border-radius:50%;background:var(--gold-2);display:grid;place-items:center;font-weight:700;color:var(--brown);font-size:1.1rem}
-  .tcard .who b{display:block;font-size:.95rem;text-align:left}
+  .tcard{position:relative;background:linear-gradient(135deg,#fff,#fff7e8);border:1px solid rgba(201,138,45,.16);border-radius:22px;padding:46px 34px 30px;box-shadow:var(--shadow);text-align:center;overflow:hidden}
+  .tcard::before{content:'“';font-family:'Playfair Display',serif;font-size:7.5rem;color:var(--gold-2);opacity:.35;position:absolute;top:-16px;left:20px;line-height:1;pointer-events:none}
+  .tcard .stars{color:var(--gold);margin-bottom:16px;letter-spacing:3px;font-size:1.15rem}
+  .tcard p{font-size:1.05rem;margin-bottom:20px;color:var(--brown);font-style:italic;position:relative;z-index:1}
+  .tcard .divider{width:46px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-2));margin:0 auto 18px;border-radius:3px}
+  .tcard .who{display:flex;align-items:center;gap:14px;justify-content:center}
+  .tcard .ava{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-2));display:grid;place-items:center;font-weight:700;color:var(--brown);font-size:1.3rem;box-shadow:0 4px 12px rgba(201,138,45,.4)}
+  .tcard .who b{display:block;font-size:1rem;text-align:left}
   .tcard .who span{font-size:.8rem;color:var(--brown-2);text-align:left}
   .tnav{position:absolute;top:50%;transform:translateY(-50%);background:var(--brown);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:1.4rem;cursor:pointer;z-index:2;line-height:1;box-shadow:var(--shadow)}
   .tnav:hover{background:var(--gold)}
@@ -250,6 +252,7 @@
   @media(max-width:600px){
     .tslide{padding:0 8px}
     .tcard{padding:26px 18px}
+    .tcard::before{font-size:5rem;top:-8px;left:10px}
     .tcard p{font-size:.95rem}
     .tnav{width:32px;height:32px;font-size:1.1rem}
   }
@@ -460,16 +463,19 @@
         <div class="tslide"><div class="tcard">
           <div class="stars">★★★★★</div>
           <p data-i18n="t1.text">Gula arennya asli dan wangi. Saya pakai untuk usaha kopi susu, pelanggan pada suka. Harga grosir juga enak.</p>
+          <div class="divider"></div>
           <div class="who"><div class="ava">R</div><div><b data-i18n="t1.name">Rina</b><span data-i18n="t1.role">Pemilik kedai kopi, Depok</span></div></div>
         </div></div>
         <div class="tslide"><div class="tcard">
           <div class="stars">★★★★★</div>
           <p data-i18n="t2.text">Pengirimannya cepat dan kemasannya rapi. Gula arennya manis alami, enggak bikin enek. Pasti repeat order.</p>
+          <div class="divider"></div>
           <div class="who"><div class="ava">D</div><div><b data-i18n="t2.name">Dedi</b><span data-i18n="t2.role">Pelanggan, Jakarta</span></div></div>
         </div></div>
         <div class="tslide"><div class="tcard">
           <div class="stars">★★★★★</div>
           <p data-i18n="t3.text">Sudah langganan dari dulu. Kualitasnya konsisten, cocok banget untuk produksi dawet dan cendol saya.</p>
+          <div class="divider"></div>
           <div class="who"><div class="ava">S</div><div><b data-i18n="t3.name">Siti</b><span data-i18n="t3.role">UMKM kuliner, Bogor</span></div></div>
         </div></div>
       </div>
