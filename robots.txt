@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://darykusuma741.github.io/gula-aren/sitemap.xml
